@@ -1,1 +1,7 @@
-original_data/*
+# ignore data folders
+original_data
+data
+
+# ignore additional files
+.ipynb_checkpoints
+
