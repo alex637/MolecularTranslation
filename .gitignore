@@ -1,6 +1,7 @@
 # ignore data folders
 original_data
 data
+submissions
 
 # ignore additional files
 .ipynb_checkpoints
