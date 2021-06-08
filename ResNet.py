@@ -87,11 +87,11 @@ class ResNet(nn.Module):
         
         self.layer1 = self._make_layer(ResBlock, layer_list[0], planes=64)
         self.layer2 = self._make_layer(ResBlock, layer_list[1], planes=128, stride=2)
-        self.layer3 = self._make_layer(ResBlock, layer_list[2], planes=256, stride=2)
-        self.layer4 = self._make_layer(ResBlock, layer_list[3], planes=512, stride=2)
+        self.layer3 = self._make_layer(ResBlock, layer_list[2], planes=128, stride=2) # 256
+        self.layer4 = self._make_layer(ResBlock, layer_list[3], planes=128, stride=2) # 512
         
         self.avgpool = nn.AdaptiveAvgPool2d((1,1))
-        self.fc = nn.Linear(512*ResBlock.expansion, num_classes)
+        self.fc = nn.Linear(128*ResBlock.expansion, num_classes) # 512
         
     def forward(self, x):
         x = self.relu(self.batch_norm1(self.conv1(x)))
@@ -138,5 +138,5 @@ def ResNet152(num_classes, channels=3):
     return ResNet(Bottleneck, [3,8,36,3], num_classes, channels)
 
 def some_model(num_classes, channels):
-    return ResNet(Bottleneck, [2,3,4,2], num_classes, channels)
+    return ResNet(Bottleneck, [2,3,3,2], num_classes, channels)
 
