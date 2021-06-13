@@ -2,6 +2,8 @@
 original_data
 data
 submissions
+preprocessing_output/
+preprocessing_output.zip
 
 # ignore additional files
 .ipynb_checkpoints
